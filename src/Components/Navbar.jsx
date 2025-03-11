@@ -13,15 +13,13 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-teal-600 text-white shadow-md w-full h-auto fixed top-0 z-50">
+        <nav className="bg-teal-600 text-white shadow-md w-full  fixed top-0 z-50">
             <div className="container mx-auto flex justify-between items-center p-2">
 
                 {/* Logo Section */}
                 <NavLink to="/" className="flex items-center">
                     <img src={GC_logo} alt="Golden Care Logo" className="w-14 md:w-20 lg:w-24 h-auto rounded-full object-contain" />
                 </NavLink>
-
-
 
                 {/* Navigation Links - Desktop */}
                 <div className={`absolute top-16 flex justify-evenly left-0 w-full bg-teal-600 md:static md:flex md:items-center md:space-x-6 transition-all duration-300 ease-in-out ${isNavOpen ? 'block' : 'hidden md:flex'}`}>
@@ -39,7 +37,7 @@ const Navbar = () => {
                 {/* User Icon for Login/Signup */}
                 <div className="relative hidden md:block">
                     <button
-                        className="text-3xl h-auto cursor-pointer hover: rounded-full object-contain focus:outline-2 focus:outline-offset-2"
+                        className="text-3xl h-auto cursor-pointer object-contain border-2 rounded-full "
                         onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                     >
                         <FaUser />
@@ -51,12 +49,11 @@ const Navbar = () => {
                         </div>
                     )}
                 </div>
+                {/* Mobile Menu Button */}
+                <button className="text-2xl md:hidden focus:outline-none absolute top-4 right-4" onClick={toggleNav}>
+                    {isNavOpen ? <FaTimes /> : <FaBars />}
+                </button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button className="text-2xl md:hidden focus:outline-none" onClick={toggleNav}>
-                {isNavOpen ? <FaTimes /> : <FaBars />}
-            </button>
 
             {/* Mobile Navigation Menu - Opens from Right */}
             <div className={`fixed top-0 right-0 w-64 h-full bg-teal-700 shadow-lg transform transition-transform duration-300 ease-in-out ${isNavOpen ? 'translate-x-0' : 'translate-x-full'}`}>
