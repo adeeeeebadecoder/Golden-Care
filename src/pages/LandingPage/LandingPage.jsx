@@ -1,12 +1,9 @@
 import React from 'react';
 import {
-    FaUserFriends,
     FaMedkit,
     FaDumbbell,
     FaUsers,
-    FaHandsHelping,
     FaUtensils,
-    FaBirthdayCake,
     FaExclamationTriangle,
     FaTags,
 } from 'react-icons/fa';

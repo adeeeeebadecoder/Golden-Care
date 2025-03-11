@@ -22,7 +22,7 @@ const Navbar = () => {
                 </NavLink>
 
                 {/* Navigation Links - Desktop */}
-                <div className={`absolute top-16 flex justify-evenly left-0 w-full bg-teal-600 md:static md:flex md:items-center md:space-x-6 transition-all duration-300 ease-in-out ${isNavOpen ? 'block' : 'hidden md:flex'}`}>
+                <div className={`absolute top-16 flex justify-evenly left-0 w-full bg-teal-600 md:static md:flex md:items-center md:space-x-6 transition-all duration-300 ease-in-out ${isNavOpen ? 'hidden' : 'hidden md:flex'}`}>
                     <NavLink to="/" className="py-2 px-4 font-bold hover:bg-teal-700 border rounded">
                         <AiFillHome className="inline-block mr-2" /> Home
                     </NavLink>
