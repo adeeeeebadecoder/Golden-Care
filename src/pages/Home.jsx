@@ -3,11 +3,11 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Navbar from '../Components/Navbar';
-import Fall from './Fall/Fall';
-import Medical from './Medical/Medical';
-import LandingPage from './LandingPage/LandingPage';
-import Homecare from './HomeService/Homecare';
-import Activities from './TrackActivities/Activities';
+import Fall from '../Screens/Fall/Fall';
+import Medical from '../Screens/Medical/Medical';
+import LandingPage from '../pages/LandingPage/LandingPage';
+import Homecare from '../Screens/HomeService/Homecare';
+import Activities from '../Screens/TrackActivities/Activities';
 
 
 const Home = () => {

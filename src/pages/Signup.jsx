@@ -1,20 +1,36 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
-        console.log("Signing up with:", name, email, password);
+        setError("");
+
+        try {
+            const response = await axios.post("http://localhost:5000/api/auth/signup", { name, email, password });
+
+            // Save token & user data in local storage
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+
+            navigate("/"); // Redirect to home page after signup
+        } catch (err) {
+            setError(err.response?.data?.message || "Signup failed");
+        }
     };
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
                 <h2 className="text-2xl font-bold text-center text-teal-600">Sign Up</h2>
+                {error && <p className="text-red-500 text-center">{error}</p>}
                 <form onSubmit={handleSignup} className="mt-4">
                     <div className="mb-4">
                         <label className="block text-gray-700">Full Name</label>
