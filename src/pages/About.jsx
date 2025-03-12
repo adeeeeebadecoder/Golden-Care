@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const About = () => {
     return (
-        <div className="p-5 mt-12 bg-gray-100 cursor-pointer mx-auto">
+        <div className=" container p-5 mt-12 bg-gray-100 cursor-pointer mx-auto">
             <h1 className="text-3xl font-bold text-teal-600 text-center mb-6">About Us</h1>
             <p className="text-lg text-gray-700">
                 Welcome to <NavLink to="/"

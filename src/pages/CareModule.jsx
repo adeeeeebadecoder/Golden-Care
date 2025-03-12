@@ -3,7 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const CareModule = () => {
     return (
-        <div className="p-5 bg-gray-100 mt-12 mx-auto">
+        <div className="container p-5 bg-gray-100 mt-12 mx-auto">
             <h1 className="text-3xl font-bold text-center text-teal-600 mb-6">Care Module</h1>
 
             {/* Navigation */}
