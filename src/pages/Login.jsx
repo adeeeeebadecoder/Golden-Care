@@ -18,7 +18,7 @@ const Login = () => {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("user", JSON.stringify(response.data.user));
 
-            navigate("/"); // Redirect to home page after login
+            navigate("/"); 
         } catch (err) {
             setError(err.response?.data?.message || "Login failed");
         }

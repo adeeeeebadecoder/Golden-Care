@@ -1,11 +1,13 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 
 const About = () => {
     return (
-        <div className="p-5 mt-12 bg-gray-100  mx-auto">
+        <div className="p-5 mt-12 bg-gray-100 cursor-pointer mx-auto">
             <h1 className="text-3xl font-bold text-teal-600 text-center mb-6">About Us</h1>
             <p className="text-lg text-gray-700">
-                Welcome to <span className="font-bold text-teal-500">Golden Care</span>, a platform dedicated to improving the well-being of senior citizens.
+                Welcome to <NavLink to="/"
+                ><span className="font-bold text-teal-500">Golden Care</span></NavLink>, a platform dedicated to improving the well-being of senior citizens.
                 Our mission is to provide reliable healthcare management, volunteer support services, and wellness programs
                 tailored to the needs of the elderly.
             </p>
