@@ -37,7 +37,7 @@ const Navbar = () => {
                 {/* User Icon for Login/Signup */}
                 <div className="relative hidden md:block">
                     <button
-                        className="text-3xl h-auto cursor-pointer object-contain border-2 rounded-full "
+                        className="text-3xl h-auto cursor-pointer object-contain "
                         onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                     >
                         <FaUser />
