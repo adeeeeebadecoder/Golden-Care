@@ -17,10 +17,10 @@ const Signup = () => {
             const response = await axios.post("http://localhost:5000/api/auth/signup", { name, email, password });
 
             // Save token & user data in local storage
-            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("token", response.data.accessToken);
             localStorage.setItem("user", JSON.stringify(response.data.user));
 
-            navigate("/"); // Redirect to home page after signup
+            navigate("/dashboard");
         } catch (err) {
             setError(err.response?.data?.message || "Signup failed");
         }

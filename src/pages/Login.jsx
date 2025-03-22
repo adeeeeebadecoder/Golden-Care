@@ -12,15 +12,28 @@ const Login = () => {
         e.preventDefault();
         setError("");
 
+        if (!email || !password) {
+            setError("Email and password are required.");
+            return;
+        }
+
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+            const response = await axios.post(
+                "http://localhost:5000/api/auth/login",
+                { email, password },
+                { withCredentials: true } // ✅ Ensures cookies are included
+            );
 
-            localStorage.setItem("token", response.data.token);
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-
-            navigate("/"); 
+            if (response.data?.accessToken) {
+                localStorage.setItem("token", response.data.accessToken);
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+                navigate("/dashboard");
+            } else {
+                setError("Invalid login response. Please try again.");
+            }
         } catch (err) {
-            setError(err.response?.data?.message || "Login failed");
+            console.error("Login error:", err);
+            setError(err.response?.data?.message || "Login failed. Please try again.");
         }
     };
 
@@ -60,7 +73,15 @@ const Login = () => {
                     </button>
                 </form>
                 <p className="text-center mt-4 text-gray-600">
-                    Don't have an account? <NavLink to="/signup" className="text-teal-600 font-bold">Sign up</NavLink>
+                    Don't have an account?{" "}
+                    <NavLink to="/signup" className="text-teal-600 font-bold">
+                        Sign up
+                    </NavLink>
+                </p>
+                <p className="text-center mt-2">
+                    <NavLink to="/forgot-password" className="text-blue-500">
+                        Forgot Password?
+                    </NavLink>
                 </p>
             </div>
         </div>

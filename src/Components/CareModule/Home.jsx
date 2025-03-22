@@ -12,14 +12,14 @@ const CareModule = () => {
     const location = useLocation();
 
     return (
-        <div className="container mx-auto mt-8 px-4">
+        <div className="container mx-auto p-7 mt-8 px-4">
             {/* Title */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center text-teal-600 mb-8 underline">
                 CARE MODULE
             </h1>
 
             {/* Features Section */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 mt-[8rem] sm:grid-cols-2 gap-6">
                 {features.map((feature, index) => {
                     const isActive = location.pathname.includes(feature.path);
 
