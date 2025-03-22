@@ -57,7 +57,7 @@ const HealthcareManagement = () => {
 
     return (
         <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-            <h2 className="text-3xl font-bold text-center mt-6 text-teal-600 mb-8">HealthCare Management</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-center text-teal-600 mb-8 underline">HealthCare Management</h2>
 
             {/* ✅ Responsive Grid Layout */}
             <div className="container mx-auto px-4 py-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
