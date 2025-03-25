@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+// import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
     const navigate = useNavigate()
-    const { user, logout } = useContext(AuthContext);
+    // const { user, logout } = useContext(AuthContext);
 
     const handleLogout = () => {
         localStorage.removeItem("token");
@@ -32,7 +32,7 @@ const Dashboard = () => {
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col items-center p-8">
             <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-3xl">
-                <h2 className="text-3xl font-bold text-teal-600 text-center">Welcome, {user.name}</h2>
+                <h2 className="text-3xl font-bold text-teal-600 text-center">Welcome, {}</h2>
                 <p className="text-gray-700 text-center">Role: {user.role}</p>
 
                 <div className="mt-6">

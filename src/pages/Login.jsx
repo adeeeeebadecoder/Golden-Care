@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { LoginContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
+    const location = useLocation();
+    const { loginData, setLoginData } = useContext(LoginContext)
     const handleLogin = async (e) => {
         e.preventDefault();
         setError("");
@@ -21,18 +24,22 @@ const Login = () => {
             const response = await axios.post(
                 "http://localhost:5000/api/auth/login",
                 { email, password },
-                { withCredentials: true } // ✅ Ensures cookies are included
+                { withCredentials: true }
             );
-
             if (response.data?.accessToken) {
                 localStorage.setItem("token", response.data.accessToken);
                 localStorage.setItem("user", JSON.stringify(response.data.user));
-                navigate("/dashboard");
+                setLoginData(response.data.user);
+                // Get previous route from location.state
+                const from = location.state?.from?.pathname;
+                toast.success('Login Success')
+                navigate(from || '/')
             } else {
                 setError("Invalid login response. Please try again.");
             }
         } catch (err) {
             console.error("Login error:", err);
+            toast.error(err.message)
             setError(err.response?.data?.message || "Login failed. Please try again.");
         }
     };

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { LoginContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Signup = () => {
     const [name, setName] = useState("");
@@ -8,7 +10,7 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
-
+    const { loginData, setLoginData } = useContext(LoginContext)
     const handleSignup = async (e) => {
         e.preventDefault();
         setError("");
@@ -19,9 +21,11 @@ const Signup = () => {
             // Save token & user data in local storage
             localStorage.setItem("token", response.data.accessToken);
             localStorage.setItem("user", JSON.stringify(response.data.user));
-
-            navigate("/dashboard");
+            setLoginData(response.data.user);
+            toast.success("SignUp successfully")
+            navigate("/");
         } catch (err) {
+            toast.error(err.message)
             setError(err.response?.data?.message || "Signup failed");
         }
     };

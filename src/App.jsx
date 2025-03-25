@@ -1,4 +1,5 @@
 import React from 'react';
+import toast, { Toaster } from "react-hot-toast";
 import { useState, useEffect } from 'react';
 import { Navigate, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
@@ -21,6 +22,8 @@ import NGOsList from './pages/VolunteerSupports/NGOs/NGOsList';
 import ForgotPassword from "./pages/ForgotPassword"
 import ResetPassword from './pages/ResetPassword';
 import NewPassword from './pages/NewPassword';
+import Features from './Components/Features';
+import ProtectedRoute from './ProtectedRoute';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -34,6 +37,8 @@ const App = () => {
 
   return (
     <Router>
+      <Toaster reverseOrder={false} />
+      <Features />
       <Navbar />
       <div className="pt-20">
         <Routes>
@@ -59,7 +64,7 @@ const App = () => {
 
           {/* Care Module */}
           <Route path="/care" element={<Home />}>
-            <Route path="healthcare" element={<HealthcareManagement />} />
+            <Route path="healthcare" element={<ProtectedRoute><HealthcareManagement /></ProtectedRoute>} />
             <Route path="healthcare/medication" element={<MedicationReminder />} />
             <Route path="healthcare/consultation" element={<DoctorConsultation />} />
             <Route path="healthcare/exercise-nutrition" element={<ExerciseNutrition />} />
@@ -68,7 +73,7 @@ const App = () => {
             <Route path="volunteer/NGOs" element={<NGOsList />} />
           </Route>
 
-          
+
         </Routes>
       </div>
       <Footer />

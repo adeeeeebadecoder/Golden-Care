@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+// import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const AdminPanel = () => {
-    const { user, logout } = useContext(AuthContext);
+    // const { user, logout } = useContext(AuthContext);
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate()
