@@ -56,7 +56,7 @@ const App = () => {
           {/* <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute requiredRole="admin"><AdminPanel /></ProtectedRoute>} /> */}
           <Route path='/dashboard' element={user ? <Dashboard user={user} /> : <Navigate to="/login" />} />
-          <Route path="/admin" element={user?.role === "admin" ? <AdminPanel /> : <Navigate to='/dashboard' />} />
+          <Route path="/admin" element={user?.role === "admin" ? <AdminPanel /> : <Navigate to='/login' />} />
 
           {/* Default Route */}
 

@@ -16,7 +16,7 @@
 //         <div className="p-6 bg-gray-50 rounded-lg shadow-md">
 //             <h2 className="text-3xl font-bold text-center mt-10 text-teal-600 mb-6">HealthCare Management</h2>
 
-//             <div className="container mx-auto px-4 py-10 h-[20rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+//             <div className="container mx-auto px-4 py-10 h-[320px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 //                 {features.map((feature, index) => {
 //                     const isActive = location.pathname.includes(`/care/healthcare/${feature.path}`);
 
@@ -46,8 +46,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FaPills, FaUserMd, FaDumbbell } from 'react-icons/fa';
 
 const features = [
-    { path: "medication", icon: FaPills, title: 'Medication Reminder', description: 'Receive medication reminders to stay on track with your prescriptions.' },
     { path: "consultation", icon: FaUserMd, title: 'Doctor Consultation', description: 'Schedule appointments and get doctor information easily.' },
+    { path: "medication", icon: FaPills, title: 'Medication Reminder', description: 'Receive medication reminders to stay on track with your prescriptions.' },
     { path: "exercise-nutrition", icon: FaDumbbell, title: 'Exercise & Nutrition', description: 'Get workout routines and diet plans tailored for seniors.' },
 ];
 
