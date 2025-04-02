@@ -42,6 +42,9 @@ const Navbar = () => {
                     <NavLink to="/care" className="py-2 px-4 font-bold hover:bg-teal-700 border rounded">
                         Care Module
                     </NavLink>
+                    <NavLink to="/contact" className="py-2 px-4 font-bold hover:bg-teal-700 border rounded">
+                       Contact Us
+                    </NavLink>
                     <NavLink to="/about" className="py-2 px-4 font-bold hover:bg-teal-700 border rounded">
                         About Us
                     </NavLink>

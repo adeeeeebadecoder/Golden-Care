@@ -24,6 +24,7 @@ import ResetPassword from './pages/ResetPassword';
 import NewPassword from './pages/NewPassword';
 import Features from './Components/Features';
 import ProtectedRoute from './ProtectedRoute';
+import ContactPage from './pages/Contact/ContactPage';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -40,11 +41,12 @@ const App = () => {
       <Toaster reverseOrder={false} />
       <Features />
       <Navbar />
-      <div className="pt-20">
+      <div className="mt-8">
         <Routes>
 
           {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
