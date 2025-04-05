@@ -114,6 +114,7 @@ const Signup = () => {
                 password,
                 role,
             });
+            console.log('Signup Success:', response.data);
 
             localStorage.setItem("token", response.data.accessToken);
             localStorage.setItem("user", JSON.stringify(response.data.user));
@@ -122,16 +123,18 @@ const Signup = () => {
 
             // Redirect based on role
             if (response.data.user.role === "admin") {
-                navigate("/admin/dashboard");
+                navigate("/admin");
             } else if (response.data.user.role === "doctor") {
                 navigate("/doctor/dashboard");
             } else if (response.data.user.role === "user") {
                 navigate("/");
             } else {
-                navigate("/user/dashboard");
+                navigate("/userProfile");
             }
         } catch (err) {
             toast.error(err.message);
+            console.log(err);
+            
             setError(err.response?.data?.message || "Signup failed");
         }
     };

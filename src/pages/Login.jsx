@@ -33,6 +33,7 @@ const Login = () => {
                     },
                 }
             );
+console.log(response);
 
             if (response.data?.accessToken) {
                 localStorage.setItem("token", response.data.accessToken);
@@ -45,30 +46,28 @@ const Login = () => {
 
                 let redirectPath = "/";
                 if (response.data.user.role === "admin") {
-                    redirectPath = "/admin/dashboard";
+                    redirectPath = "/admin";
                 } else if (response.data.user.role === "doctor") {
                     redirectPath = "/doctor/dashboard";
                 } else if (response.data.user.role === "user") {
                     redirectPath = "/";
                 }
                 else {
-                    redirectPath = "/user/dashboard"; // or just "/"
+                    redirectPath = "/userProfile"; // or just "/"
                 }
-
                 toast.success(`Login Successful! Welcome ${response.data.user.role}`);
                 navigate(redirectPath);
-
-
             } else {
                 setError("Invalid login response. Please try again.");
             }
         } catch (err) {
             const errorMessage = err.response?.data?.message || "Login failed. Please try again.";
+            console.log(err);
+            
             toast.error(errorMessage);
             setError(errorMessage);
         }
     };
-
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
@@ -76,7 +75,6 @@ const Login = () => {
             navigate(`/${user.role}/dashboard`);
         }
     }, []);
-
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">

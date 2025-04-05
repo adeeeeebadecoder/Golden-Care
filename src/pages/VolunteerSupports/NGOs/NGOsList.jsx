@@ -23,7 +23,7 @@ const ngos = [
 ];
 
 const NGOsList = () => {
-    const navigate = useNavigate(); // ✅ Fix: Initialize navigate
+    const navigate = useNavigate(); 
 
     return (
         <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg border border-gray-200">

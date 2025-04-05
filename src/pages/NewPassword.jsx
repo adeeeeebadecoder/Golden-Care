@@ -10,9 +10,12 @@ const NewPassword = () => {
     const handleReset = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/reset-password", { token, newPassword });
+            const response = await axios.post("http://localhost:5000/api/auth/reset-password", { newPassword, token });
             setMessage(response.data.message);
+            console.log(response.data.message);
+
         } catch (error) {
+            console.log(error);
             setMessage("Error resetting password.");
         }
     };

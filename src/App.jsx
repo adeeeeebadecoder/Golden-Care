@@ -43,39 +43,6 @@ const App = () => {
       <Toaster reverseOrder={false} />
       <Navbar />
       <div className="mt-20">
-        {/* <Routes>
-
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path='/reset-password/:token' element={<NewPassword />} />
-          <Route path='/reset-password' element={<ResetPassword />} />
-
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          <Route path="/admin/dashboard" element={<ProtectedRoute requiredRoles={["admin"]}><AdminPanel /></ProtectedRoute>} />
-          <Route path="/doctor/dashboard" element={<ProtectedRoute requiredRoles={["doctor"]}><DoctorDashboard /></ProtectedRoute>} />
-
-          <Route path='/dashboard' element={user ? <Dashboard user={user} /> : <Navigate to="/login" />} />
-          <Route path="/admin" element={user?.role === "admin" ? <AdminPanel /> : <Navigate to='/login' />} />
-
-
-          <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
-
-          <Route path="/care" element={<Home />}>
-            <Route path="healthcare" element={<ProtectedRoute><HealthcareManagement /></ProtectedRoute>} />
-            <Route path="healthcare/medication" element={<MedicationReminder />} />
-            <Route path="healthcare/consultation" element={<DoctorConsultation />} />
-            <Route path="healthcare/exercise-nutrition" element={<ExerciseNutrition />} />
-            <Route path="volunteer" element={<VolunteerSupport />} />
-            <Route path="volunteer/groups" element={<SupportGroupsList />} />
-            <Route path="volunteer/NGOs" element={<NGOsList />} />
-          </Route>
-
-
-        </Routes> */}
 
         <Routes>
 
@@ -87,7 +54,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path='/reset-password/:token' element={<NewPassword />} />
-          <Route path='/reset-password' element={<ResetPassword />} />
+          {/* <Route path='/reset-password' element={<ResetPassword />} /> */}
           <Route path="/admin/set-reminder" element={<MedicationReminderAdmin />} />
 
           {/* Protected Routes */}
@@ -108,10 +75,8 @@ const App = () => {
             <Route path="volunteer/NGOs" element={<ProtectedRoute allowedRoles={["user"]}><NGOsList /></ProtectedRoute>} />
           </Route>
 
-          {/* Default Route */}
-          {/* <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} /> */}
-
-          {/* <Route path='*' element={<PageNotFound />} /> */}
+          {/* Page Not Found */}
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
       <Footer />

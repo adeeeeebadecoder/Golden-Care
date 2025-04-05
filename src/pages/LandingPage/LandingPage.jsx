@@ -304,9 +304,6 @@ const LandingPage = () => {
                 </div>
             </div>
 
-
-
-
             {/* Features */}
             <div className="text-center mt-2 py-10 text-black">
                 <h1 className="text-5xl font-bold mt-6">Features</h1>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import GC_logo from "../assets/GC_logo.webp";
@@ -10,7 +10,7 @@ const Navbar = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const { loginData, setLoginData } = useContext(LoginContext)
-    
+
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -43,7 +43,7 @@ const Navbar = () => {
                         Care Module
                     </NavLink>
                     <NavLink to="/contact" className="py-2 px-4 font-bold hover:bg-teal-700 border rounded">
-                       Contact Us
+                        Contact Us
                     </NavLink>
                     <NavLink to="/about" className="py-2 px-4 font-bold hover:bg-teal-700 border rounded">
                         About Us
@@ -61,12 +61,30 @@ const Navbar = () => {
                     {isUserMenuOpen && (
                         <div className="absolute right-0 mt-2 bg-white text-black shadow-md rounded-lg overflow-hidden w-40">
                             {loginData ? (
-                                <button
-                                    onClick={handleLogout}
-                                    className="block w-full text-left px-4 py-2 hover:bg-gray-200"
-                                >
-                                    Logout
-                                </button>
+                                <>
+
+                                    <Link
+                                        to={
+                                            loginData?.role === 'user'
+                                                ? '/userProfile'
+                                                : loginData?.role === 'admin'
+                                                    ? '/admin'
+                                                    : loginData?.role === 'doctor'
+                                                        ? '/doctor/dashboard'
+                                                        : '/'
+                                        }
+                                    >
+                                        <button className="block w-full text-left px-4 py-2 hover:bg-gray-200">Profile</button>
+
+                                    </Link>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                                    >
+                                        Logout
+                                    </button>
+                                </>
+
                             ) : (
                                 <>
                                     <NavLink to="/login" className="block px-4 py-2 hover:bg-gray-200">Login</NavLink>
@@ -129,7 +147,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
-        </nav>
+        </nav >
     );
 };
 
