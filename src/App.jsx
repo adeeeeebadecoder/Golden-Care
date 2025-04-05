@@ -25,6 +25,8 @@ import ForgotPassword from "./pages/ForgotPassword"
 import ResetPassword from './pages/ResetPassword';
 import NewPassword from './pages/NewPassword';
 import ContactPage from './pages/Contact/ContactPage';
+import MedicationReminderAdmin from './pages/HealthcareManagement/Medication/MedicationReminderAdmin';
+import PageNotFound from "../src/PageNotFound"
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -86,6 +88,7 @@ const App = () => {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path='/reset-password/:token' element={<NewPassword />} />
           <Route path='/reset-password' element={<ResetPassword />} />
+          <Route path="/admin/set-reminder" element={<MedicationReminderAdmin />} />
 
           {/* Protected Routes */}
           <Route path='/userProfile' element={<Dashboard />} />
@@ -106,10 +109,10 @@ const App = () => {
           </Route>
 
           {/* Default Route */}
-          <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
+          {/* <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} /> */}
 
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
-
       </div>
       <Footer />
     </Router>
