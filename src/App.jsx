@@ -10,7 +10,7 @@ import VolunteerSupport from './Components/CareModule/VolunteerSupport';
 import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/UserProfile";
 import AdminPanel from "./pages/AdminPanel";
 import DoctorDashboard from "./DoctorDashboard";
 import ProtectedRoute from './ProtectedRoute';
@@ -88,12 +88,11 @@ const App = () => {
           <Route path='/reset-password' element={<ResetPassword />} />
 
           {/* Protected Routes */}
-          <Route path='/dashboard' element={<ProtectedRoute allowedRoles={["user", "admin", "doctor"]}><Dashboard /></ProtectedRoute>} />
+          <Route path='/userProfile' element={<Dashboard />}/>
           <Route path="/admin" element={<ProtectedRoute allowedRoles={["admin"]}><AdminPanel /></ProtectedRoute>} />
           <Route path="/doctor/dashboard" element={<ProtectedRoute allowedRoles={["doctor"]}><DoctorDashboard /></ProtectedRoute>} />
 
-          {/* Default Route */}
-          <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
+
 
           {/* Care Module */}
           <Route path="/care" element={<Home />}>
@@ -105,6 +104,9 @@ const App = () => {
             <Route path="volunteer/groups" element={<ProtectedRoute allowedRoles={["user"]}><SupportGroupsList /></ProtectedRoute>} />
             <Route path="volunteer/NGOs" element={<ProtectedRoute allowedRoles={["user"]}><NGOsList /></ProtectedRoute>} />
           </Route>
+
+          {/* Default Route */}
+          <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
 
         </Routes>
 

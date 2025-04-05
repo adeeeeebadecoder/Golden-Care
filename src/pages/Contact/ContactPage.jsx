@@ -1,64 +1,6 @@
-// import React from 'react';
-
-// const ContactPage = () => {
-//     return (
-//         <div className="min-h-screen bg-gray-100 py-10">
-//             <div className="container mx-auto px-6 lg:px-20">
-//                 <h1 className="text-4xl font-bold text-center text-teal-800">Contact Us</h1>
-//                 <p className="text-center text-gray-600 mt-4">We would love to hear from you!</p>
-
-//                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10">
-//                     {/* Contact Form */}
-//                     <div className="bg-white shadow-lg rounded-lg p-6">
-//                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Get In Touch</h2>
-//                         <form className="space-y-4">
-//                             <input type="text" placeholder="Full Name" className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600" />
-//                             <input type="email" placeholder="Email Address" className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600" />
-//                             <textarea placeholder="Your Message" rows="5" className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"></textarea>
-//                             <button type="submit" className="w-full bg-teal-600 text-white p-3 rounded-lg hover:bg-teal-700 transition-all">Send Message</button>
-//                         </form>
-//                     </div>
-
-//                     {/* Contact Details */}
-//                     <div className="bg-white shadow-lg rounded-lg p-6">
-//                         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Contact Information</h2>
-//                         <p className="text-gray-700 mb-4">Reach out to us via the details below or fill out the form to send us a message.</p>
-//                         <div className="space-y-4">
-//                             <p className="flex items-center space-x-2 text-gray-800">
-//                                 <span className="font-semibold">📍 Address:</span> 123 Golden Care Street, City, Country
-//                             </p>
-//                             <p className="flex items-center space-x-2 text-gray-800">
-//                                 <span className="font-semibold">📞 Phone:</span> +123 456 7890
-//                             </p>
-//                             <p className="flex items-center space-x-2 text-gray-800">
-//                                 <span className="font-semibold">✉️ Email:</span> support@goldencare.com
-//                             </p>
-//                         </div>
-//                     </div>
-//                 </div>
-
-//                 {/* Google Map */}
-//                 <div className="mt-12">
-//                     <h2 className="text-2xl font-semibold text-gray-800 text-center mb-4">Find Us Here</h2>
-//                     <div className="w-full h-96 bg-gray-300 rounded-lg overflow-hidden">
-//                         <iframe
-//                             className="w-full h-full"
-//                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509635!2d144.95373531531662!3d-37.81627997975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df1f9a7d5%3A0x5045675218ce9e0!2sMelbourne%2C+Victoria%2C+Australia!5e0!3m2!1sen!2sus!4v1511369027055"
-//                             allowFullScreen
-//                             loading="lazy"
-//                         ></iframe>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default ContactPage;
-
-
 import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import axios from "axios";
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -68,12 +10,25 @@ const ContactPage = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log('Form submitted:', formData);
+    //     setSubmitted(true);
+    //     setTimeout(() => setSubmitted(false), 3000);
+    // };
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 3000);
+        try {
+            await axios.post('http://localhost:5000/api/contact', formData); 
+            setSubmitted(true);
+            setFormData({ name: '', email: '', message: '' });
+            setTimeout(() => setSubmitted(false), 3000);
+        } catch (err) {
+            console.error('Error sending contact form:', err);
+        }
     };
+
+
 
     const handleCall = () => {
         window.location.href = 'tel:+1234567890';

@@ -80,6 +80,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import DashboardMessages from "./Contact/Dashboard";
 
 const AdminDashboard = () => {
     const [users, setUsers] = useState([]);
@@ -120,7 +121,7 @@ const AdminDashboard = () => {
         } catch (err) {
             console.error("Error fetching users:", err);
             setError("Failed to fetch users.");
-            setUsers([]); // Set to empty array to avoid `undefined` issues
+            setUsers([]);
         } finally {
             setLoading(false);
         }
@@ -199,67 +200,6 @@ const AdminDashboard = () => {
                                 <th className="border px-4 py-2">Change Role</th>
                             </tr>
                         </thead>
-                        {/* <tbody>
-                            {users.length > 0 ? (
-                                users.map((user) => (
-                                    <tr key={user._id} className="hover:bg-gray-50">
-                                        <td className="border px-4 py-2">{user.name}</td>
-                                        <td className="border px-4 py-2">{user.email}</td>
-                                        <td className="border px-4 py-2">{user.role}</td>
-                                        <td className="border px-4 py-2">
-                                            <select
-                                                value={user.role}
-                                                onChange={(e) => handleRoleChange(user._id, e.target.value)}
-                                                className="border rounded px-2 py-1 bg-white text-gray-700"
-                                            >
-                                                <option value="user">User</option>
-                                                <option value="doctor">Doctor</option>
-                                                <option value="admin">Admin</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                ))
-                            ) : (
-                                <tr>
-                                    <td colSpan="4" className="text-center py-4 text-gray-500">
-                                        No users found.
-                                    </td>
-                                </tr>
-                            )}
-                        </tbody> */}
-                        {/* <tbody>
-                            <tbody>
-                                {users && users.length > 0 ? (
-                                    users.map((user) => (
-                                        <tr key={user._id}>
-                                            <td className="border px-4 py-2">{user.name}</td>
-                                            <td className="border px-4 py-2">{user.email}</td>
-                                            <td className="border px-4 py-2">{user.role}</td>
-                                            <td className="border px-4 py-2">
-                                                <select
-                                                    value={user.role}
-                                                    onChange={(e) => handleRoleChange(user._id, e.target.value)}
-                                                    className="border rounded px-2 py-1"
-                                                >
-                                                    <option value="user">User</option>
-                                                    <option value="doctor">Doctor</option>
-                                                    <option value="admin">Admin</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    ))
-                                ) : (
-                                    <tr>
-                                        <td colSpan="4" className="text-center py-4 text-gray-500">
-                                            No users found.
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-
-
-                        </tbody> */}
-
                         <tbody>
                             {users && users.length > 0 ? (
                                 users.map((user) => (
@@ -290,6 +230,7 @@ const AdminDashboard = () => {
                         </tbody>
 
                     </table>
+                    <DashboardMessages />
                 </div>
             )}
         </div>

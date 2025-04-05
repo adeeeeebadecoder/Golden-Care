@@ -240,7 +240,7 @@ const DoctorConsultation = () => {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
-            alert(`Appointment scheduled successfully with Dr. ${formData.doctorName}!`);
+            alert(`Appointment scheduled successfully with ${formData.doctorName}!`);
             setFormData({ patientName: "", doctorName: "", appointmentDate: "", appointmentTime: "", contactNumber: "" });
         } catch (error) {
             console.error("Error scheduling appointment:", error);
