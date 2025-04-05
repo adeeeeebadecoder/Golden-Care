@@ -125,6 +125,8 @@ const Signup = () => {
                 navigate("/admin/dashboard");
             } else if (response.data.user.role === "doctor") {
                 navigate("/doctor/dashboard");
+            } else if (response.data.user.role === "user") {
+                navigate("/");
             } else {
                 navigate("/user/dashboard");
             }

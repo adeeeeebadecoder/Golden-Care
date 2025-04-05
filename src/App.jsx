@@ -111,7 +111,7 @@ const App = () => {
           {/* Default Route */}
           {/* <Route path="*" element={<Navigate to={user ? "/dashboard" : "/login"} />} /> */}
 
-          <Route path='*' element={<PageNotFound />} />
+          {/* <Route path='*' element={<PageNotFound />} /> */}
         </Routes>
       </div>
       <Footer />
