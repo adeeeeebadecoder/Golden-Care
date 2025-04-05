@@ -88,7 +88,7 @@ const App = () => {
           <Route path='/reset-password' element={<ResetPassword />} />
 
           {/* Protected Routes */}
-          <Route path='/userProfile' element={<Dashboard />}/>
+          <Route path='/userProfile' element={<Dashboard />} />
           <Route path="/admin" element={<ProtectedRoute allowedRoles={["admin"]}><AdminPanel /></ProtectedRoute>} />
           <Route path="/doctor/dashboard" element={<ProtectedRoute allowedRoles={["doctor"]}><DoctorDashboard /></ProtectedRoute>} />
 
