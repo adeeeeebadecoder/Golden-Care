@@ -80,9 +80,9 @@ const Footer = () => {
                     <h3 className="text-lg font-semibold ">Quick Links</h3>
                     <div className="flex justify-center flex-col  mt-2">
                         <Link to="/" className="hover:text-yellow-400">Home</Link>
-                        <Link to="/about" className="hover:text-yellow-400">About</Link>
-                        {/* <Link to="/services" className="hover:text-yellow-400">Services</Link> */}
+                        <Link to="/care" className="hover:text-yellow-400">Care Module</Link>
                         <Link to="/contact" className="hover:text-yellow-400">Contact</Link>
+                        <Link to="/about" className="hover:text-yellow-400">About</Link>
                     </div>
                 </div>
                 <div className="text-center md:text-right">

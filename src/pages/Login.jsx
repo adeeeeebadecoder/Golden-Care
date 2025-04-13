@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [role, setRole] = useState("user"); // Default role
+    const [role, setRole] = useState("user"); 
     const [error, setError] = useState("");
     const navigate = useNavigate();
     // const location = useLocation();
@@ -33,7 +33,6 @@ const Login = () => {
                     },
                 }
             );
-            // console.log(response);
 
             if (response.data?.accessToken) {
                 localStorage.setItem("token", response.data.accessToken);
@@ -53,7 +52,7 @@ const Login = () => {
                     redirectPath = "/";
                 }
                 else {
-                    redirectPath = "/userProfile"; // or just "/"
+                    redirectPath = "/userProfile"; 
                 }
                 toast.success(`Login Successful! Welcome ${response.data.user.role}`);
                 navigate(redirectPath);

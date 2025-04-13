@@ -54,7 +54,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path='/reset-password/:token' element={<NewPassword />} />
-          {/* <Route path='/reset-password' element={<ResetPassword />} /> */}
+          <Route path='/reset-password' element={<ResetPassword />} />
           <Route path="/admin/set-reminder" element={<MedicationReminderAdmin />} />
 
           {/* Protected Routes */}
