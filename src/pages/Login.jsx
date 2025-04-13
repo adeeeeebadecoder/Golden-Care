@@ -33,7 +33,7 @@ const Login = () => {
                     },
                 }
             );
-console.log(response);
+            // console.log(response);
 
             if (response.data?.accessToken) {
                 localStorage.setItem("token", response.data.accessToken);
@@ -63,7 +63,7 @@ console.log(response);
         } catch (err) {
             const errorMessage = err.response?.data?.message || "Login failed. Please try again.";
             console.log(err);
-            
+
             toast.error(errorMessage);
             setError(errorMessage);
         }
@@ -112,8 +112,9 @@ console.log(response);
                             className="w-full px-3 py-2 border rounded-lg"
                             required
                         >
-                            <option value="user">User</option>
+                            <option value="" disabled>Select Role</option>
                             <option value="doctor">Doctor</option>
+                            <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>
                     </div>

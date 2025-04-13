@@ -69,6 +69,22 @@ const Dashboard = () => {
                     )}
                 </div>
 
+                {/* Reminder Section */}
+                <div className="mt-8">
+                    <h3 className="text-xl font-semibold mb-2">Reminders</h3>
+                    {/* <ul className="space-y-3">
+                        <li className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <p><strong>Task:</strong> Take your blood pressure medicine</p>
+                            <p><strong>Time:</strong> 9:00 AM</p>
+                        </li>
+                        <li className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <p><strong>Task:</strong> Follow-up with Dr. Smith</p>
+                            <p><strong>Due Date:</strong> {new Date().toLocaleDateString()}</p>
+                        </li>
+                    </ul> */}
+                </div>
+
+                {/* Logout Button */}
                 <button
                     onClick={handleLogout}
                     className="mt-6 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition"
